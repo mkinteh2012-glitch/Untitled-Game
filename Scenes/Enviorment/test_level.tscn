@@ -1,0 +1,66 @@
+[gd_scene format=3 uid="uid://d4a0w3bjf6x4a"]
+
+[ext_resource type="PackedScene" uid="uid://doebn6ag0asif" path="res://Scenes/Actors/Player.tscn" id="1_n7r0c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_op6g7"]
+size = Vector2(258.0625, 20)
+
+[node name="TestLevel" type="Node2D" unique_id=743358687]
+
+[node name="Player" parent="." unique_id=938906962 instance=ExtResource("1_n7r0c")]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=622427960]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" unique_id=238766760]
+position = Vector2(33, 44)
+shape = SubResource("RectangleShape2D_op6g7")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D" unique_id=1342650272]
+position = Vector2(211, -10)
+scale = Vector2(0.3, 1)
+shape = SubResource("RectangleShape2D_op6g7")
+
+[node name="CollisionShape2D6" type="CollisionShape2D" parent="StaticBody2D" unique_id=744358905]
+position = Vector2(56, -235)
+scale = Vector2(0.2, 0.5)
+shape = SubResource("RectangleShape2D_op6g7")
+
+[node name="CollisionShape2D7" type="CollisionShape2D" parent="StaticBody2D" unique_id=1599612356]
+position = Vector2(138, -193)
+scale = Vector2(0.2, 0.5)
+shape = SubResource("RectangleShape2D_op6g7")
+
+[node name="CollisionShape2D8" type="CollisionShape2D" parent="StaticBody2D" unique_id=489017878]
+position = Vector2(232, -138)
+scale = Vector2(0.2, 0.5)
+shape = SubResource("RectangleShape2D_op6g7")
+
+[node name="CollisionShape2D5" type="CollisionShape2D" parent="StaticBody2D" unique_id=2117355575]
+position = Vector2(-182, -203)
+scale = Vector2(0.75, 1)
+shape = SubResource("RectangleShape2D_op6g7")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D" unique_id=1729053736]
+position = Vector2(-96, -73)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_op6g7")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="StaticBody2D" unique_id=356419811]
+position = Vector2(-8, -155)
+rotation = 1.5707964
+shape = SubResource("RectangleShape2D_op6g7")
+
+[node name="CollisionShape2D9" type="CollisionShape2D" parent="StaticBody2D" unique_id=654812330]
+position = Vector2(449, -9)
+scale = Vector2(0.6, 0.9)
+shape = SubResource("RectangleShape2D_op6g7")
+
+[node name="CollisionShape2D10" type="CollisionShape2D" parent="StaticBody2D" unique_id=1906491986]
+position = Vector2(320, -73)
+scale = Vector2(1.2, 0.9)
+shape = SubResource("RectangleShape2D_op6g7")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=413081296]
+position = Vector2(53, -102)
+scale = Vector2(0.75, 0.75)
+zoom = Vector2(0.8, 0.8)
