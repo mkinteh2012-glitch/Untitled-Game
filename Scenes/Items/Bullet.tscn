@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://bmhv666jxi6tl"]
+
+[ext_resource type="Script" uid="uid://c0eicmao2ehfc" path="res://Scripts/bullet.gd" id="1_xc01y"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kjegb"]
+size = Vector2(11, 6)
+
+[node name="Bullet" type="Area2D" unique_id=1796883720]
+script = ExtResource("1_xc01y")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=225565360]
+position = Vector2(7.5, 3)
+shape = SubResource("RectangleShape2D_kjegb")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1641883606]
+offset_right = 13.0
+offset_bottom = 6.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://djac15noiacw"]
+
+[ext_resource type="Texture2D" uid="uid://dj7mrrr3l8jgv" path="res://icon.svg" id="1_4kah7"]
+[ext_resource type="Script" uid="uid://c2vopmta8gjaw" path="res://Scripts/gun.gd" id="1_ak828"]
+[ext_resource type="PackedScene" uid="uid://bmhv666jxi6tl" path="res://Scenes/Items/Bullet.tscn" id="2_pq3s3"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ak828"]
+atlas = ExtResource("1_4kah7")
+region = Rect2(0, 60, 128, 12)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_op6g7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ak828")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Gun" type="Node2D" unique_id=1921797916]
+script = ExtResource("1_ak828")
+bullet_scene = ExtResource("2_pq3s3")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=386985948]
+position = Vector2(14.625001, -1.4901161e-08)
+scale = Vector2(0.22460936, 0.37499997)
+sprite_frames = SubResource("SpriteFrames_op6g7")
+
+[node name="Muzzle" type="Marker2D" parent="." unique_id=1026373798]
+position = Vector2(28, 0)

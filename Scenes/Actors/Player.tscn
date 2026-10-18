@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://buvhwmy6ilbs4" path="res://Scripts/player.gd" id="1_1p3rw"]
 [ext_resource type="Texture2D" uid="uid://dj7mrrr3l8jgv" path="res://icon.svg" id="1_jisj3"]
+[ext_resource type="PackedScene" uid="uid://djac15noiacw" path="res://Scenes/Items/gun.tscn" id="3_akrb1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1p3rw"]
 atlas = ExtResource("1_jisj3")
@@ -19,15 +20,87 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ix4yh"]
-height = 36.0
+height = 33.333336
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_akrb1"]
+particle_flag_disable_z = true
+spread = 90.0
+initial_velocity_min = 80.0
+initial_velocity_max = 150.0
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 9.49949e-08
+gravity = Vector3(0, 0, 0)
+scale_min = 1.5
+scale_max = 3.0
+color = Color(0.88049585, 0.8804958, 0.88049585, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_op6g7"]
+particle_flag_disable_z = true
+spread = 90.0
+initial_velocity_min = 80.0
+initial_velocity_max = 150.0
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 9.49949e-08
+gravity = Vector3(0, 0, 0)
+scale_min = 1.5
+scale_max = 3.0
+color = Color(0.88049585, 0.8804958, 0.88049585, 1)
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_1p3rw"]
+particle_flag_disable_z = true
+direction = Vector3(-1, 0, 0)
+spread = 30.0
+initial_velocity_min = 20.0
+initial_velocity_max = 50.0
+gravity = Vector3(0, 50, 0)
+scale_min = 1.5
+scale_max = 2.5
+color = Color(0.79199904, 0.79199916, 0.7919989, 1)
 
 [node name="Player" type="CharacterBody2D" unique_id=938906962]
+scale = Vector2(0.9, 0.9)
 script = ExtResource("1_1p3rw")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=254681729]
-position = Vector2(5.9604645e-07, -0.50000143)
+position = Vector2(-1.9073486e-06, 0)
 scale = Vector2(0.171875, 0.2734375)
 sprite_frames = SubResource("SpriteFrames_op6g7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1786520129]
 shape = SubResource("CapsuleShape2D_ix4yh")
+
+[node name="JumpDust" type="GPUParticles2D" parent="." unique_id=2045852193]
+position = Vector2(0, 18)
+rotation = -4.6901007
+emitting = false
+amount = 6
+lifetime = 0.2
+one_shot = true
+explosiveness = 1.0
+trail_lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_akrb1")
+
+[node name="WallJumpDust" type="GPUParticles2D" parent="." unique_id=1511712977]
+position = Vector2(0, 18)
+emitting = false
+amount = 6
+lifetime = 0.15000000000000002
+one_shot = true
+explosiveness = 1.0
+trail_lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_op6g7")
+
+[node name="RunDust" type="GPUParticles2D" parent="." unique_id=738734872]
+position = Vector2(0, 18)
+emitting = false
+lifetime = 0.2
+trail_lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_1p3rw")
+
+[node name="RayCastL" type="RayCast2D" parent="." unique_id=1811755824]
+target_position = Vector2(-12, 0)
+
+[node name="RayCastR" type="RayCast2D" parent="." unique_id=41841702]
+target_position = Vector2(12, 0)
+
+[node name="Gun" parent="." unique_id=1921797916 instance=ExtResource("3_akrb1")]
