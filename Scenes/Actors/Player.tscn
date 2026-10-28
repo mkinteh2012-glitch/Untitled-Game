@@ -57,7 +57,7 @@ scale_min = 1.5
 scale_max = 2.5
 color = Color(0.79199904, 0.79199916, 0.7919989, 1)
 
-[node name="Player" type="CharacterBody2D" unique_id=938906962]
+[node name="Player" type="CharacterBody2D" unique_id=938906962 groups=["player"]]
 scale = Vector2(0.9, 0.9)
 script = ExtResource("1_1p3rw")
 
@@ -66,7 +66,7 @@ position = Vector2(-1.9073486e-06, 0)
 scale = Vector2(0.171875, 0.2734375)
 sprite_frames = SubResource("SpriteFrames_op6g7")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1786520129]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1786520129 groups=["player"]]
 shape = SubResource("CapsuleShape2D_ix4yh")
 
 [node name="JumpDust" type="GPUParticles2D" parent="." unique_id=2045852193]

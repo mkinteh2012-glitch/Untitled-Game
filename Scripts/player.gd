@@ -40,6 +40,7 @@ var ghost_timer = 0.0
 var dash_direction = Vector2.RIGHT
 var used_recoil_boost = false
 var squash_tween: Tween
+var hurt_timer := 0.0
 #Getting scene refrence
 @onready var sprite = $AnimatedSprite2D
 @onready var hitbox = $CollisionShape2D
@@ -53,8 +54,15 @@ var squash_tween: Tween
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 var was_in_air: bool = false
 var original_scale: Vector2 = Vector2.ONE
+var max_health := 3
+var health := 3
+var respawn_pos: Vector2
+var inviln_time := 1.0
+var invuln_timer := 0.0
 
 func _ready() -> void:
+	await get_tree().process_frame
+	respawn_pos = global_position
 	if sprite:
 		original_scale = sprite.scale
 	coyote_timer = 0.0
@@ -63,6 +71,9 @@ func _physics_process(delta: float) -> void:
 	# dash check
 	if is_on_floor():
 		used_recoil_boost = false
+	
+	if invuln_timer > 0.0:
+		invuln_timer -= delta
 		
 	if jump_buffer_timer >= 0:
 		jump_buffer_timer -= delta
@@ -110,6 +121,7 @@ func _physics_process(delta: float) -> void:
 		coyote_timer -= delta
 		
 		var applied_gravity = gravity
+	
 		
 		if is_against_wall():
 			if Input.is_action_pressed("ui_up") and wall_climb_timer > 0.0:
@@ -125,7 +137,10 @@ func _physics_process(delta: float) -> void:
 			applied_gravity *= fall_gravity_mult
 		velocity.y += applied_gravity * delta
 	
-	
+	if hurt_timer > 0.0:
+		hurt_timer -= delta
+		move_and_slide()
+		return
 
 	if Input.is_action_just_pressed("ui_accept"):
 		jump_buffer_timer = jump_buffer_time
@@ -242,3 +257,53 @@ func apply_squash_n_strech(target_scale: Vector2, duration: float = 0.15) -> voi
 	# Tween back to your exact original scale, preserving the flip direction
 	squash_tween = create_tween().set_trans(Tween.TRANS_QUAD).set_ease(Tween.EASE_OUT)
 	squash_tween.tween_property(sprite, "scale", Vector2(original_scale.x * current_sign_x, original_scale.y), duration)
+
+func take_damage(amount,knockback):
+	if invuln_timer > 0.0:
+		return
+	invuln_timer = inviln_time
+	health -= amount
+	print("New health:",health)
+	hurt_timer = 0.2
+	velocity = knockback
+	flash_hit()
+	burst_dust(Color(1.0, 0.4, 0.4))
+	shake_camera(6.0,0.25)
+	if health <= 0:
+		die()
+
+func shake_camera(strength,duration):
+	var cam := get_tree().current_scene.get_node_or_null("Camera2D")
+	if cam and cam.has_method("shake"):
+		cam.shake(strength,duration)
+
+func die():
+	burst_dust(Color(1.0, 0.4, 0.4))
+	global_position = respawn_pos
+	health = max_health
+	velocity =  Vector2.ZERO
+	var world := get_tree().current_scene
+	if world and world.has_method("slide_cam_to_player"):
+		world.slide_cam_to_player()
+	
+	
+var flash_tween : Tween
+
+func flash_hit():
+	if flash_tween and flash_tween.is_valid():
+		flash_tween.kill()
+	sprite.modulate = Color(1.0,0.2,0.2)
+	flash_tween = create_tween()
+	flash_tween.tween_interval(0.1)
+	flash_tween.tween_property(sprite, "modulate", Color.WHITE, 0.25)
+	
+func burst_dust(tint):
+	jump_dust.modulate = tint	
+	jump_dust.restart()
+	var t := create_tween()
+	t.tween_interval(0.5)
+	t.tween_callback(func(): jump_dust.modulate = Color.WHITE)
+
+func bounce(height):
+	velocity.y = height
+	

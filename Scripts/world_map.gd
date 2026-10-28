@@ -59,3 +59,7 @@ func room_at(point:Vector2) -> Rect2:
 		if r.has_point(point):
 			return r
 	return Rect2()
+
+func slide_cam_to_player():
+	current_rect = Rect2()
+	update_camera(false)
