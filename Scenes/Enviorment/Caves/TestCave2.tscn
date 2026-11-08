@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://dyealvm045j6t"]
+
+[ext_resource type="Script" uid="uid://c0qiub57ojgp8" path="res://Scripts/Local/cavescript.gd" id="1_p34y0"]
+[ext_resource type="Script" uid="uid://cauvw7gqx81eq" path="res://Scripts/Local/camera_2d.gd" id="2_cpyac"]
+[ext_resource type="PackedScene" uid="uid://doebn6ag0asif" path="res://Scenes/Actors/Player.tscn" id="3_nnjan"]
+[ext_resource type="Script" uid="uid://d08cbkqfexs3t" path="res://Scripts/Local/cave_generator.gd" id="4_cpyac"]
+[ext_resource type="PackedScene" uid="uid://clpwd575stp4s" path="res://Scenes/Enviorment/Caves/TestCave2_mid2.tscn" id="5_nnjan"]
+[ext_resource type="PackedScene" uid="uid://cyg1ql1qd7lbi" path="res://Scenes/Enviorment/Caves/TestCave2_start.tscn" id="6_pwvsc"]
+[ext_resource type="PackedScene" uid="uid://cmb4eb4jfkvdn" path="res://Scenes/Enviorment/Caves/TestCave2_mid1.tscn" id="7_x2gp7"]
+[ext_resource type="PackedScene" uid="uid://b7103rur5ber0" path="res://Scenes/Enviorment/Caves/TestCave2_end.tscn" id="8_tci63"]
+[ext_resource type="PackedScene" uid="uid://d3ivi04ddfguh" path="res://Scenes/Enviorment/Caves/TestCave2_mid3.tscn" id="9_5pvgu"]
+[ext_resource type="PackedScene" uid="uid://c55r815ikvrwr" path="res://Scenes/Enviorment/Caves/TestCave2_mid4.tscn" id="10_g2wb1"]
+[ext_resource type="PackedScene" uid="uid://xsenghchkw8x" path="res://Scenes/Enviorment/Caves/TestCave2_mid5.tscn" id="11_tuovo"]
+[ext_resource type="PackedScene" uid="uid://c2jmw83re52dj" path="res://Scenes/Enviorment/Caves/TestCave2_mid6.tscn" id="12_y16nm"]
+[ext_resource type="PackedScene" uid="uid://caufo1bgtpg5k" path="res://Scenes/Enviorment/Caves/TestCave2_mid7.tscn" id="13_y16nm"]
+
+[node name="TestCave2" type="Node2D" unique_id=1158599059 node_paths=PackedStringArray("player", "generator")]
+script = ExtResource("1_p34y0")
+player = NodePath("Player")
+generator = NodePath("CaveGenerator")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=2039989530]
+position = Vector2(288, 162)
+position_smoothing_enabled = true
+position_smoothing_speed = 8.0
+script = ExtResource("2_cpyac")
+
+[node name="Player" parent="." unique_id=938906962 instance=ExtResource("3_nnjan")]
+position = Vector2(-1, 4)
+
+[node name="CaveGenerator" type="Node2D" parent="." unique_id=585148403]
+script = ExtResource("4_cpyac")
+room_scenes = Array[PackedScene]([ExtResource("5_nnjan"), ExtResource("6_pwvsc"), ExtResource("7_x2gp7"), ExtResource("8_tci63"), ExtResource("9_5pvgu"), ExtResource("10_g2wb1"), ExtResource("11_tuovo"), ExtResource("12_y16nm"), ExtResource("13_y16nm")])
+room_count = 20
+max_attempts = 30

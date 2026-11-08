@@ -1,0 +1,96 @@
+[gd_scene format=4 uid="uid://cmb4eb4jfkvdn"]
+
+[ext_resource type="Script" uid="uid://chwm61so01ct6" path="res://Scripts/Local/caveroom.gd.gd" id="1_5qtyq"]
+[ext_resource type="Script" uid="uid://d0gmkxhw4keew" path="res://Scripts/Local/room_area.gd" id="4_ay83u"]
+[ext_resource type="Texture2D" uid="uid://bdaoh2vrwb2au" path="res://Assets/Tileset/TileSet.png" id="5_2fuu4"]
+[ext_resource type="PackedScene" uid="uid://dop6mo567jhle" path="res://Scenes/Actors/Enemies/jumpenemy.tscn" id="7_vp27r"]
+[ext_resource type="PackedScene" uid="uid://lwl0gqtv3ouj" path="res://Scenes/Actors/Enemies/enemy.tscn" id="8_haluo"]
+[ext_resource type="PackedScene" uid="uid://cd1o0geonqfem" path="res://Scenes/Actors/Enemies/flyingenemy.tscn" id="9_y0bad"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1xiui"]
+size = Vector2(577, 321)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bvovy"]
+texture = ExtResource("5_2fuu4")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_2cccr"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_bvovy")
+
+[node name="TestCave1" type="Node2D" unique_id=913600260]
+script = ExtResource("1_5qtyq")
+exits = 10
+
+[node name="RoomBounds" type="Node2D" parent="." unique_id=1537389121]
+position = Vector2(-575, -1)
+
+[node name="Room1" type="Area2D" parent="RoomBounds" unique_id=2098530181]
+script = ExtResource("4_ay83u")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBounds/Room1" unique_id=1543666009]
+position = Vector2(288.5, 163.5)
+shape = SubResource("RectangleShape2D_1xiui")
+debug_color = Color(0, 0, 0, 0.16470589)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1872022787]
+position = Vector2(-621, 2)
+tile_map_data = PackedByteArray("AAADABMAAAAAAAEAAAAEABMAAAAAAAEAAAAFABMAAAAAAAEAAAAGABMAAAAAAAEAAAAHABMAAAAAAAEAAAAIABMAAAAAAAEAAAAJABMAAAAAAAEAAAAKABMAAAAAAAEAAAALABMAAAAAAAEAAAAMABMAAAAAAAEAAAANABMAAAAAAAEAAAAOABMAAAAAAAEAAAAPABMAAAAAAAEAAAAQABMAAAAAAAEAAAARABMAAAAAAAEAAAASABMAAAAAAAEAAAATABMAAAAAAAEAAAAUABMAAAAAAAEAAAAWABMAAAAAAAEAAAAXABMAAAAAAAEAAAAVABMAAAAAAAEAAAAYABMAAAAAAAEAAAAZABMAAAAAAAEAAAAaABMAAAAAAAEAAAAbABMAAAAAAAEAAAAcABMAAAAAAAEAAAAdABMAAAAAAAEAAAAeABMAAAAAAAEAAAAfABMAAAAAAAEAAAAgABMAAAAAAAEAAAAhABMAAAAAAAEAAAAiABMAAAAAAAEAAAAjABMAAAAAAAEAAAAkABMAAAAAAAEAAAAlABMAAAAAAAEAAAAmABMAAAAAAAEAAAAKAA8AAAAAAAEAAAALAA8AAAAAAAEAAAAMAA8AAAAAAAEAAAANAA8AAAAAAAEAAAAOAA8AAAAAAAEAAAAPAA8AAAAAAAEAAAAQAA8AAAAAAAEAAAARAA8AAAAAAAEAAAAZAA8AAAAAAAEAAAAaAA8AAAAAAAEAAAAbAA8AAAAAAAEAAAAcAA8AAAAAAAEAAAAdAA8AAAAAAAEAAAAeAA8AAAAAAAEAAAAfAA4AAAAAAAEAAAAgAA4AAAAAAAEAAAAgAA8AAAAAAAEAAAAfAA8AAAAAAAEAAAAhAA8AAAAAAAEAAAAiAA8AAAAAAAEAAAAjAA8AAAAAAAEAAAAkAA8AAAAAAAEAAAARAA4AAAAAAAEAAAASAA4AAAAAAAEAAAASAA0AAAAAAAEAAAASAA8AAAAAAAEAAAATAAkAAAAAAAEAAAAUAAkAAAAAAAEAAAAVAAkAAAAAAAEAAAAWAAkAAAAAAAEAAAAXAAkAAAAAAAEAAAAYAAkAAAAAAAEAAAAZAAkAAAAAAAEAAAAHAAYAAAAAAAEAAAAIAAYAAAAAAAEAAAAJAAYAAAAAAAEAAAAJAAcAAAAAAAEAAAAKAAcAAAAAAAEAAAAKAAgAAAAAAAEAAAALAAgAAAAAAAEAAAAMAAgAAAAAAAEAAAANAAgAAAAAAAEAAAANAAkAAAAAAAEAAAAOAAkAAAAAAAEAAAAOAAgAAAAAAAEAAAANAAcAAAAAAAEAAAAMAAcAAAAAAAEAAAALAAcAAAAAAAEAAAALAAYAAAAAAAEAAAAKAAYAAAAAAAEAAAAHAAcAAAAAAAEAAAAIAAcAAAAAAAEAAAAIAAgAAAAAAAEAAAAJAAgAAAAAAAEAAAAMAAkAAAAAAAEAAAALAAkAAAAAAAEAAAAHAAgAAAAAAAEAAAAHAAkAAAAAAAEAAAAIAAkAAAAAAAEAAAAJAAkAAAAAAAEAAAAKAAkAAAAAAAEAAAAfAAcAAAAAAAEAAAAgAAcAAAAAAAEAAAAhAAcAAAAAAAEAAAAhAAgAAAAAAAEAAAAiAAgAAAAAAAEAAAAjAAgAAAAAAAEAAAAjAAkAAAAAAAEAAAAiAAkAAAAAAAEAAAAhAAkAAAAAAAEAAAAgAAkAAAAAAAEAAAAfAAkAAAAAAAEAAAAfAAgAAAAAAAEAAAAgAAgAAAAAAAEAAAAiAAcAAAAAAAEAAAAjAAcAAAAAAAEAAAAeAAgAAAAAAAEAAAAeAAkAAAAAAAEAAAAdAAkAAAAAAAEAAAAdAAoAAAAAAAEAAAAcAAoAAAAAAAEAAAADAAAAAAAAAAEAAAAEAAAAAAAAAAEAAAAFAAAAAAAAAAEAAAAGAAAAAAAAAAEAAAAHAAAAAAAAAAEAAAAIAAAAAAAAAAEAAAAIAAEAAAAAAAEAAAAJAAEAAAAAAAEAAAAKAAEAAAAAAAEAAAALAAEAAAAAAAEAAAAMAAEAAAAAAAEAAAANAAEAAAAAAAEAAAAOAAEAAAAAAAEAAAAPAAEAAAAAAAEAAAAQAAEAAAAAAAEAAAARAAEAAAAAAAEAAAASAAEAAAAAAAEAAAATAAEAAAAAAAEAAAAUAAEAAAAAAAEAAAAVAAEAAAAAAAEAAAAWAAEAAAAAAAEAAAAXAAEAAAAAAAEAAAAYAAEAAAAAAAEAAAAZAAEAAAAAAAEAAAAaAAEAAAAAAAEAAAAbAAEAAAAAAAEAAAAcAAEAAAAAAAEAAAAcAAAAAAAAAAEAAAAdAAAAAAAAAAEAAAAeAAAAAAAAAAEAAAAfAAAAAAAAAAEAAAAgAAAAAAAAAAEAAAAhAAAAAAAAAAEAAAAiAAAAAAAAAAEAAAAjAAAAAAAAAAEAAAAkAAAAAAAAAAEAAAAlAAAAAAAAAAEAAAAmAAAAAAAAAAEAAAACABMAAAAAAAEAAAA=")
+tile_set = SubResource("TileSet_2cccr")
+
+[node name="Hazards" type="Node2D" parent="." unique_id=985300677]
+position = Vector2(-575, -1)
+
+[node name="Enemies" type="Node2D" parent="." unique_id=356998376]
+position = Vector2(224, 209)
+
+[node name="JumpEnemy" parent="Enemies" unique_id=98609605 instance=ExtResource("7_vp27r")]
+position = Vector2(-538, -27)
+
+[node name="JumpEnemy2" parent="Enemies" unique_id=100115348 instance=ExtResource("7_vp27r")]
+position = Vector2(-572, -47)
+
+[node name="JumpEnemy3" parent="Enemies" unique_id=406179588 instance=ExtResource("7_vp27r")]
+position = Vector2(-723, 75)
+
+[node name="JumpEnemy4" parent="Enemies" unique_id=2004727772 instance=ExtResource("7_vp27r")]
+position = Vector2(-682, -25)
+
+[node name="JumpEnemy5" parent="Enemies" unique_id=673961165 instance=ExtResource("7_vp27r")]
+position = Vector2(-638, -15)
+
+[node name="Enemy" parent="Enemies" unique_id=63720119 instance=ExtResource("8_haluo")]
+position = Vector2(-709, -127)
+
+[node name="Enemy2" parent="Enemies" unique_id=1927770608 instance=ExtResource("8_haluo")]
+position = Vector2(-802, -6)
+
+[node name="Enemy5" parent="Enemies" unique_id=1316683258 instance=ExtResource("8_haluo")]
+position = Vector2(-468, 6)
+
+[node name="Enemy3" parent="Enemies" unique_id=1818013812 instance=ExtResource("8_haluo")]
+position = Vector2(-736, 24)
+
+[node name="Enemy4" parent="Enemies" unique_id=1416814302 instance=ExtResource("8_haluo")]
+position = Vector2(-582, -83)
+
+[node name="FlyEnemy" parent="Enemies" unique_id=1992835560 instance=ExtResource("9_y0bad")]
+position = Vector2(-459, -114)
+
+[node name="FlyEnemy2" parent="Enemies" unique_id=960814050 instance=ExtResource("9_y0bad")]
+position = Vector2(-338, -3)
+
+[node name="FlyEnemy3" parent="Enemies" unique_id=895347998 instance=ExtResource("9_y0bad")]
+position = Vector2(-494, 59)

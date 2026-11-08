@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cd1o0geonqfem"]
 
-[ext_resource type="Script" uid="uid://cvwv6uxnr644t" path="res://Scripts/flyingenemy.gd" id="1_qsoqn"]
+[ext_resource type="Script" uid="uid://cvwv6uxnr644t" path="res://Scripts/Local/flyingenemy.gd" id="1_qsoqn"]
 [ext_resource type="Texture2D" uid="uid://dj7mrrr3l8jgv" path="res://icon.svg" id="2_n5ipm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_op6g7"]
@@ -66,3 +66,7 @@ lifetime = 0.3
 one_shot = true
 explosiveness = 1.0
 process_material = SubResource("ParticleProcessMaterial_00sg6")
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=2067103613]
+exclude_parent = false
+target_position = Vector2(40, 0)

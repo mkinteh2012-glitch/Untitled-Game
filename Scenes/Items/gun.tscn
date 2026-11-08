@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://djac15noiacw"]
 
 [ext_resource type="Texture2D" uid="uid://dj7mrrr3l8jgv" path="res://icon.svg" id="1_4kah7"]
-[ext_resource type="Script" uid="uid://c2vopmta8gjaw" path="res://Scripts/gun.gd" id="1_ak828"]
+[ext_resource type="Script" uid="uid://c2vopmta8gjaw" path="res://Scripts/Local/gun.gd" id="1_ak828"]
 [ext_resource type="PackedScene" uid="uid://bmhv666jxi6tl" path="res://Scenes/Items/Bullet.tscn" id="2_pq3s3"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ak828"]

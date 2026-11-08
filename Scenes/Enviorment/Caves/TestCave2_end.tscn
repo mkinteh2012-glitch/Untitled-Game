@@ -1,0 +1,111 @@
+[gd_scene format=4 uid="uid://b7103rur5ber0"]
+
+[ext_resource type="Script" uid="uid://chwm61so01ct6" path="res://Scripts/Local/caveroom.gd.gd" id="1_knvsa"]
+[ext_resource type="Script" uid="uid://d0gmkxhw4keew" path="res://Scripts/Local/room_area.gd" id="2_ki8qk"]
+[ext_resource type="Texture2D" uid="uid://bdaoh2vrwb2au" path="res://Assets/Tileset/TileSet.png" id="3_6hvne"]
+[ext_resource type="PackedScene" uid="uid://b2dpjro84mskv" path="res://Scenes/Enviorment/Hazard.tscn" id="4_kyw5n"]
+[ext_resource type="PackedScene" uid="uid://dop6mo567jhle" path="res://Scenes/Actors/Enemies/jumpenemy.tscn" id="5_2k5xh"]
+[ext_resource type="PackedScene" uid="uid://lwl0gqtv3ouj" path="res://Scenes/Actors/Enemies/enemy.tscn" id="6_ppyjs"]
+[ext_resource type="PackedScene" uid="uid://cd1o0geonqfem" path="res://Scenes/Actors/Enemies/flyingenemy.tscn" id="7_4okwl"]
+[ext_resource type="PackedScene" uid="uid://cqyhye7dc7se0" path="res://Scenes/Enviorment/cave_entrance.tscn" id="8_nwy6g"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1xiui"]
+size = Vector2(576, 324)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bvovy"]
+texture = ExtResource("3_6hvne")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+2:0/0 = 0
+3:0/0 = 0
+4:0/0 = 0
+5:0/0 = 0
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_2cccr"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_bvovy")
+
+[node name="TestCave1" type="Node2D" unique_id=913600260]
+script = ExtResource("1_knvsa")
+exits = 2
+
+[node name="RoomBounds" type="Node2D" parent="." unique_id=1537389121]
+
+[node name="Room2" type="Area2D" parent="RoomBounds" unique_id=1507921196]
+script = ExtResource("2_ki8qk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RoomBounds/Room2" unique_id=141649469]
+position = Vector2(-289.5, 163.5)
+shape = SubResource("RectangleShape2D_1xiui")
+debug_color = Color(0, 0, 0, 0.16470589)
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1872022787]
+position = Vector2(-46, 3)
+tile_map_data = PackedByteArray("AAD1/xAAAAAAAAEAAAACABMAAAAAAAEAAAABABMAAAAAAAEAAAAAABMAAAAAAAEAAAD//xIAAAAAAAEAAAD+/xIAAAAAAAEAAAD9/xIAAAAAAAEAAAD8/xIAAAAAAAEAAAD7/xEAAAAAAAEAAAD6/xEAAAAAAAEAAAD5/xEAAAAAAAEAAAD4/xEAAAAAAAEAAAD3/xEAAAAAAAEAAAD2/xEAAAAAAAEAAAD2/xAAAAAAAAEAAAD0/xAAAAAAAAEAAADz/xAAAAAAAAEAAADy/xAAAAAAAAEAAADx/xAAAAAAAAEAAADw/xAAAAAAAAEAAADv/xAAAAAAAAEAAADu/xAAAAAAAAEAAADt/xAAAAAAAAEAAADs/xAAAAAAAAEAAADs/xEAAAAAAAEAAADs/xIAAAAAAAEAAADr/xIAAAAAAAEAAADq/xIAAAAAAAEAAADp/xIAAAAAAAEAAADo/xIAAAAAAAEAAADn/xIAAAAAAAEAAADm/xIAAAAAAAEAAADl/xIAAAAAAAEAAADl/xMAAAAAAAEAAADk/xMAAAAAAAEAAADj/xMAAAAAAAEAAADi/xMAAAAAAAEAAADh/xMAAAAAAAEAAADg/xMAAAAAAAEAAADf/xMAAAAAAAEAAAACAAAAAAAAAAEAAAABAAAAAAAAAAEAAAAAAAAAAAAAAAEAAAD//wAAAAAAAAEAAAD+/wAAAAAAAAEAAAD9/wAAAAAAAAEAAAD8/wAAAAAAAAEAAAD7/wAAAAAAAAEAAAD6/wAAAAAAAAEAAAD5/wAAAAAAAAEAAAD5/wEAAAAAAAEAAAD4/wEAAAAAAAEAAAD3/wEAAAAAAAEAAAD3/wIAAAAAAAEAAAD2/wIAAAAAAAEAAAD1/wMAAAAAAAEAAAD0/wMAAAAAAAEAAADz/wMAAAAAAAEAAADy/wMAAAAAAAEAAADx/wMAAAAAAAEAAADx/wQAAAAAAAEAAADw/wQAAAAAAAEAAADw/wUAAAAAAAEAAADv/wUAAAAAAAEAAADv/wYAAAAAAAEAAADv/wcAAAAAAAEAAADv/wgAAAAAAAEAAADu/wgAAAAAAAEAAADt/wgAAAAAAAEAAADs/wgAAAAAAAEAAADr/wgAAAAAAAEAAADq/wgAAAAAAAEAAADp/wgAAAAAAAEAAADo/wgAAAAAAAEAAADo/wcAAAAAAAEAAADn/wcAAAAAAAEAAADm/wcAAAAAAAEAAADm/wYAAAAAAAEAAADl/wYAAAAAAAEAAADl/wUAAAAAAAEAAADk/wUAAAAAAAEAAADk/wQAAAAAAAEAAADj/wQAAAAAAAEAAADi/wQAAAAAAAEAAADf/w0AAAAAAAEAAADf/w4AAAAAAAEAAADf/w8AAAAAAAEAAADf/xAAAAAAAAEAAADf/xEAAAAAAAEAAADf/xIAAAAAAAEAAADf/wwAAAAAAAEAAADf/wsAAAAAAAEAAADg/woAAAAAAAEAAADg/wkAAAAAAAEAAADg/wgAAAAAAAEAAADh/wgAAAAAAAEAAADh/wcAAAAAAAEAAADh/wYAAAAAAAEAAADh/wUAAAAAAAEAAADh/wQAAAAAAAEAAADf/woAAAAAAAEAAADk/xIAAAAAAAEAAADk/xEAAAAAAAEAAADk/xAAAAAAAAEAAADk/w8AAAAAAAEAAADk/w4AAAAAAAEAAADj/w4AAAAAAAEAAADi/w4AAAAAAAEAAAA=")
+tile_set = SubResource("TileSet_2cccr")
+
+[node name="Hazards" type="Node2D" parent="." unique_id=985300677]
+
+[node name="Spikes" parent="Hazards" unique_id=615084293 instance=ExtResource("4_kyw5n")]
+z_index = -1
+position = Vector2(-316, 251)
+
+[node name="Spikes2" parent="Hazards" unique_id=1318799597 instance=ExtResource("4_kyw5n")]
+z_index = -1
+position = Vector2(-310, 251)
+
+[node name="Spikes3" parent="Hazards" unique_id=2098794218 instance=ExtResource("4_kyw5n")]
+z_index = -1
+position = Vector2(-304, 251)
+
+[node name="Enemies" type="Node2D" parent="." unique_id=356998376]
+position = Vector2(799, 210)
+
+[node name="JumpEnemy" parent="Enemies" unique_id=98609605 instance=ExtResource("5_2k5xh")]
+position = Vector2(-967, -49)
+
+[node name="JumpEnemy2" parent="Enemies" unique_id=100115348 instance=ExtResource("5_2k5xh")]
+position = Vector2(-1001, -69)
+
+[node name="JumpEnemy3" parent="Enemies" unique_id=406179588 instance=ExtResource("5_2k5xh")]
+position = Vector2(-871, 58)
+
+[node name="JumpEnemy4" parent="Enemies" unique_id=2004727772 instance=ExtResource("5_2k5xh")]
+position = Vector2(-1111, -47)
+
+[node name="JumpEnemy5" parent="Enemies" unique_id=673961165 instance=ExtResource("5_2k5xh")]
+position = Vector2(-1067, -37)
+
+[node name="Enemy" parent="Enemies" unique_id=63720119 instance=ExtResource("6_ppyjs")]
+position = Vector2(-857, -144)
+
+[node name="Enemy2" parent="Enemies" unique_id=1927770608 instance=ExtResource("6_ppyjs")]
+position = Vector2(-1012, -23)
+
+[node name="Enemy5" parent="Enemies" unique_id=1316683258 instance=ExtResource("6_ppyjs")]
+position = Vector2(-897, -16)
+
+[node name="Enemy3" parent="Enemies" unique_id=1818013812 instance=ExtResource("6_ppyjs")]
+position = Vector2(-963.00006, 6)
+
+[node name="Enemy4" parent="Enemies" unique_id=1416814302 instance=ExtResource("6_ppyjs")]
+position = Vector2(-1011, -105)
+
+[node name="FlyEnemy" parent="Enemies" unique_id=1992835560 instance=ExtResource("7_4okwl")]
+position = Vector2(-888, -136)
+
+[node name="FlyEnemy2" parent="Enemies" unique_id=960814050 instance=ExtResource("7_4okwl")]
+position = Vector2(-915, -42)
+
+[node name="FlyEnemy3" parent="Enemies" unique_id=895347998 instance=ExtResource("7_4okwl")]
+position = Vector2(-923, 37)
+
+[node name="CaveEntrance" parent="." unique_id=1688549329 instance=ExtResource("8_nwy6g")]
+position = Vector2(-534, 295)

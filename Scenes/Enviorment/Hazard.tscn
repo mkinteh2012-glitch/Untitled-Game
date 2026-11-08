@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b2dpjro84mskv"]
 
 [ext_resource type="Texture2D" uid="uid://cqdfe55l1erc0" path="res://Assets/Tileset/Hazards.png" id="1_5shdd"]
-[ext_resource type="Script" uid="uid://cq65prs00rjxu" path="res://Scripts/hazard.gd" id="1_x7sx3"]
+[ext_resource type="Script" uid="uid://cq65prs00rjxu" path="res://Scripts/Local/hazard.gd" id="1_x7sx3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cg11s"]
 size = Vector2(5, 11)

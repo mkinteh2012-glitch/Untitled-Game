@@ -49,6 +49,7 @@ var hurt_timer := 0.0
 @onready var run_dust = $RunDust
 @onready var wall_check_l = $RayCastL
 @onready var wall_check_r = $RayCastR
+@onready var gun = $Gun
 
 #getting some defaults
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
@@ -262,7 +263,7 @@ func take_damage(amount,knockback):
 	if invuln_timer > 0.0:
 		return
 	invuln_timer = inviln_time
-	health -= amount
+	health -= 0
 	print("New health:",health)
 	hurt_timer = 0.2
 	velocity = knockback
@@ -279,8 +280,17 @@ func shake_camera(strength,duration):
 
 func die():
 	burst_dust(Color(1.0, 0.4, 0.4))
+	sprite.visible = false
+	gun.visible = false
+	velocity =  Vector2.ZERO
+	await get_tree().create_timer(0.3).timeout
+	if CaveManager.in_cave:
+		CaveManager.return_to_surface()
+		return
 	global_position = respawn_pos
 	health = max_health
+	sprite.visible = true
+	gun.visible = true
 	velocity =  Vector2.ZERO
 	var world := get_tree().current_scene
 	if world and world.has_method("slide_cam_to_player"):
