@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 CaveManager="*uid://8hdhfsm3tk3i"
+Cutscene="*uid://bhoisqvxve8y"
 
 [display]
 

@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://xsenghchkw8x" path="res://Scenes/Enviorment/Caves/TestCave2_mid5.tscn" id="11_tuovo"]
 [ext_resource type="PackedScene" uid="uid://c2jmw83re52dj" path="res://Scenes/Enviorment/Caves/TestCave2_mid6.tscn" id="12_y16nm"]
 [ext_resource type="PackedScene" uid="uid://caufo1bgtpg5k" path="res://Scenes/Enviorment/Caves/TestCave2_mid7.tscn" id="13_y16nm"]
+[ext_resource type="PackedScene" uid="uid://bl8o3gwptqqg0" path="res://Scenes/Enviorment/Caves/TestCave2_mid8.tscn" id="14_yushb"]
 
 [node name="TestCave2" type="Node2D" unique_id=1158599059 node_paths=PackedStringArray("player", "generator")]
 script = ExtResource("1_p34y0")
@@ -30,6 +31,7 @@ position = Vector2(-1, 4)
 
 [node name="CaveGenerator" type="Node2D" parent="." unique_id=585148403]
 script = ExtResource("4_cpyac")
-room_scenes = Array[PackedScene]([ExtResource("5_nnjan"), ExtResource("6_pwvsc"), ExtResource("7_x2gp7"), ExtResource("8_tci63"), ExtResource("9_5pvgu"), ExtResource("10_g2wb1"), ExtResource("11_tuovo"), ExtResource("12_y16nm"), ExtResource("13_y16nm")])
-room_count = 20
+room_scenes = Array[PackedScene]([ExtResource("5_nnjan"), ExtResource("6_pwvsc"), ExtResource("7_x2gp7"), ExtResource("8_tci63"), ExtResource("9_5pvgu"), ExtResource("10_g2wb1"), ExtResource("11_tuovo"), ExtResource("12_y16nm"), ExtResource("13_y16nm"), ExtResource("14_yushb")])
+room_count = 8
 max_attempts = 30
+extra_rooms = 2
